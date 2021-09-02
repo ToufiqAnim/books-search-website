@@ -11,12 +11,11 @@ const toggleSearchResult = displayStyle =>{
 const searchBooks = () => {
     const searchInput = document.getElementById('search-input');
     const searchText = searchInput.value;
+    searchInput.value = '';
 
     // display spinner
     toggleSpinner('block');
     toggleSearchResult('none');
-
-    searchInput.value = '';
 
     // book container
     const bookContainer = document.getElementById('book-container');
@@ -50,7 +49,7 @@ const displaySearchResult = books =>{
 
     
     const booksResult = document.getElementById('books-result');
-    
+
     // Error Handling
     if (totalBooks.length === 0){
         booksResult.innerText = `No Books Found`;
