@@ -1,6 +1,9 @@
-// document.getElementById('error-message').style.display = 'none';
- const errorP = document.getElementById('error-message');
-
+ const errorMessage = document.getElementById('error-message');
+// Spinner Function
+const toggleSpinner = displayStyle =>{
+    document.getElementById('spinner').style.display = displayStyle;
+}
+// Search style Function
 const toggleSearchResult = displayStyle =>{
     document.getElementById('books').style.display = displayStyle;
 }
@@ -9,20 +12,29 @@ const searchBooks = () => {
     const searchInput = document.getElementById('search-input');
     const searchText = searchInput.value;
 
-
+    // display spinner
+    toggleSpinner('block');
     toggleSearchResult('none');
 
     searchInput.value = '';
-    // document.getElementById('error-message').style.display = 'none';
+
+    // book container
+    const bookContainer = document.getElementById('book-container');
+    bookContainer.textContent =''; 
+    //book result
+    const booksResult = document.getElementById('books-result');
+    booksResult.textContent = '';
+
+    // Error Handling
+    errorMessage.innerText = 'Please Write Books Names'
     if (searchText === ''){
-        errorP.innerText = "Please Type Books name";
+        errorMessage.style.display = 'block';
         
     }
     else{
-        errorP.innerText = '';
+        errorMessage.style.display = 'none';
     }
     
-
     const url =  `https://openlibrary.org/search.json?q=${searchText}`;
     
     fetch(url)
@@ -31,6 +43,7 @@ const searchBooks = () => {
 }
 
 
+// Display Search Result
 
 const displaySearchResult = books =>{
     const totalBooks = books.filter(info => info.cover_i !== undefined && info.author_name !== undefined && info.first_publish_year !== undefined && info.publisher !== undefined);
@@ -38,14 +51,14 @@ const displaySearchResult = books =>{
     
     const booksResult = document.getElementById('books-result');
     
-
+    // Error Handling
     if (totalBooks.length === 0){
         booksResult.innerText = `No Books Found`;
     }
     
     else{
         booksResult.innerText = `Total ${totalBooks.length} Results Found`;
-
+    }
         const bookContainer = document.getElementById('book-container');
         bookContainer.textContent ='';
         totalBooks.slice(0,25)?.forEach(book => {
@@ -67,11 +80,9 @@ const displaySearchResult = books =>{
             `;
           bookContainer.appendChild(div); 
         })
-
-        
-    }
     
-
+    // display spinner
+    toggleSpinner('none');
     toggleSearchResult('block');
 
 }
