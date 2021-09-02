@@ -1,4 +1,5 @@
- document.getElementById('error-message').style.display = 'none';
+// document.getElementById('error-message').style.display = 'none';
+ const errorP = document.getElementById('error-message');
 // spinner
 const toggleSpinner = displayStyle =>{
     document.getElementById('spinner').style.display = displayStyle;
@@ -16,7 +17,15 @@ const searchBooks = () => {
     toggleSearchResult('none');
 
     searchInput.value = '';
-    document.getElementById('error-message').style.display = 'none';
+    // document.getElementById('error-message').style.display = 'none';
+    if (searchText === ''){
+        errorP.innerText = "Please Type Books name";
+        
+    }
+    else{
+        errorP.innerText = '';
+    }
+    
 
     const url =  `https://openlibrary.org/search.json?q=${searchText}`;
     
@@ -25,11 +34,13 @@ const searchBooks = () => {
     .then(data => displaySearchResult(data.docs))
     .catch(error => displayError(error));
 
+
 }
 
-const displayError = error =>{
+
+/* const displayError = error =>{
     document.getElementById('error-message').style.display = 'block';
-}
+} */
 
 const displaySearchResult = books =>{
     const bookContainer = document.getElementById('book-container');
