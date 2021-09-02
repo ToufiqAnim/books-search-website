@@ -13,7 +13,7 @@ const searchBooks = () => {
     const searchText = searchInput.value;
     searchInput.value = '';
 
-    // display spinner
+    // display style spinner and search result
     toggleSpinner('block');
     toggleSearchResult('none');
 
@@ -80,7 +80,7 @@ const displaySearchResult = books =>{
           bookContainer.appendChild(div); 
         })
     
-    // display spinner
+
     toggleSpinner('none');
     toggleSearchResult('block');
 
