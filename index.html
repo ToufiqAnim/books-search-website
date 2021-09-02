@@ -9,67 +9,51 @@
     <style>
         .card-img-top {
         width: 70%;
-        height: 20vw;
+        height: 18vw;
         object-fit: cover;
+        }
+
+        #spinner{
+            display: none;
         }
     </style>
 </head>
 <body>
         
-        <section class="container my-2">
-            <h1 class="text-success text-center mb-4">Book Archive</h1>
+    <section class="container my-2">
+        <h1 class="text-success text-center mb-4">Book Archive</h1>
             <!-- Input Box -->
-            <div class="d-flex">
-              <input type="text" class="form-control me-2" placeholder="Your Favourite Book" id="search-input"/>
-              <button onclick="searchBooks()" class="btn btn-dark" id="search-btn">Search</button>
-            </div>
-          </section>
-          <section class="container">
-    </section>
-    <section class="container">
-      <!-- Country Details -->
-      <div class="row" id="book-details"></div>
-      <hr/>
+        <div class="d-flex">
+            <input type="text" class="form-control me-2" placeholder="Your Favourite Book" id="search-input"/>
+            <button onclick="searchBooks()" class="btn btn-dark" id="search-btn">Search</button>
+        </div>
     </section>
 
-    <section class="container mt-2">
-        <div id="error"></div>
-        <!-- Countries -->
+    <section class="container">
+        
+      <!-- Book Details -->
+        <div class="row" id="book-details"></div>
+        <hr/>
         <!-- Spinner -->
-        <div class="text-center">
-          <div id="spinner" class="spinner-border d-none" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+        <div class="d-flex justify-content-center">
+            <div id="spinner" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
         </div>
+        <!-- Error -->
+        <div>
+            <p id="error-message" class=" text-danger text-center">Please Type Books Name</p>
+        </div>
+    </section>
+
+    <section id="books" class="container mt-2">
+
+        <!-- Book Container -->
         <div id="book-container" class="row row-cols-1 row-cols-md-3 g-4">
-          <!-- Reapeating -->
-          <!-- <div class="col-md-3 col-12">
-          
-            <div class="rounded overflow-hidden border p-2">
-              <img
-                src="https://restcountries.eu/data/umi.svg"
-                class="w-100"
-                alt=""
-              />
-            </div>
-            
-            <div
-              class="
-                py-2
-                d-flex
-                justify-content-between
-                align-items-center
-                d-md-block
-                text-md-center
-              "
-            >
-              <h1>Bangladesh</h1>
-              <button class="btn btn-dark">Learn More</button>
-            </div>
-          </div> -->
-          <!-- Repeating -->
+
         </div>
       </section>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
